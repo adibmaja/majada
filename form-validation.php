@@ -2,13 +2,15 @@
 
 	if(isset($_POST['submit'])){
 		//echo "<pre>";
-		//print_r($_POST);
+		 print_r($_POST);
 		//print_r($_FILES);
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$pw = $_POST['pw'];
 		$rpw = $_POST['rpw'];
 		$dob = $_POST['dob'];
+		if(isset($_POST['gender']))
+			{$gender =$_POST['gender'];}
 		$mobile = $_POST['mobile'];
 		$error = 0;
 		$msg = "";
@@ -24,6 +26,10 @@
 		if($pw == "" || !preg_match('/[0-9]?[A-Z]/',$pw)){
 			$error = $error+1;
 			$msg .= "<p>* password required</p>";
+		}
+		if($pw!=$rpw){
+			$error = $error+1;
+			$msg .= "<p>* Password doesn't match</p>";
 		}
 		if($dob != ""){
 			$explode = explode('-',$dob);
@@ -46,6 +52,11 @@
 			$error = $error+1;
 			$msg .= "<p>* date field required</p>";
 		}
+		if(!isset($_POST['gender'])){
+			$error = $error+1;
+			$msg .= "<p>* Gender required</p>";
+		}
+		
 		if($mobile == "" || !is_numeric($mobile)){
 			$error = $error+1;
 			$msg .= "<p>* phone required</p>";
@@ -162,14 +173,14 @@
 					</td>
 				</tr>
 				<tr class="row">
-					<td class="label"> <label for="sex"> Gender </label></td>
+					<td class="label"> <label for="gender"> Gender </label></td>
 					<td> 
 						<input type="radio" name="gender" value="male"  >
-						<label for="sex"> Male </label>
+						<label for="gender"> Male </label>
 						 <input type="radio" name="gender" value="female"  >
-						<label for="sex"> Gender </label>
+						<label for="gender"> Gender </label>
 						<input type="radio" name="gender" value="other"  >
-						<label for="sex"> Other </label>
+						<label for="gender"> Other </label>
 					</td>
 				</tr>
 				<tr class="row">

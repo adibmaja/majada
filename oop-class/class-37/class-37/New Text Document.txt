@@ -1,8 +1,0 @@
-name     	-> sql injection , xxs 
-email		-> valid email
-password	-> strong (pattern)
-retype password	-> match
-picture		->jpg , png , 10 kb , picture rename
-date of birth	-> date
-mobile number	-> 11 digit
-gender		-> blank
